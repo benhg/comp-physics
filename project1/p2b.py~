@@ -1,0 +1,17 @@
+print("""Loading in STM data and plotting it""")
+dat = load_file("stm.txt")
+PHI = pi/2
+H_dat = 2.5
+
+d_plot = zeros([len(dat), len(dat[0])])
+for i, val in enumerate(copy(dat)):
+    for j, val2 in enumerate(val):
+        try:
+            d_plot[i][j] = I(i, j, PHI, H_dat, dat)
+        except IndexError as e:
+            pass
+
+
+jet()
+imshow(d_plot, origin="upper")
+show()
