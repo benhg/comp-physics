@@ -83,9 +83,9 @@ def generate(t):
     t = t[1]
     print(f"Starting Frame {i}")
     ans = [abs(Psi(x, t))**2 for x in linspace(0, L, 100)]
-    #img.append(plot(linspace(0, L, 100), ans, label="$\Psi(x, t=%s)$" % t))
-    integ = scipy.integrate.simps(ans, linspace(0, L, 100))
-    print(integ)
+    # img.append(plot(linspace(0, L, 100), ans, label="$\Psi(x, t=%s)$" % t))
+    # integ = scipy.integrate.simps(ans, linspace(0, L, 100))
+    # print(integ)
 
     print(f"Finished Frame {i}")
     plt.plot(linspace(0, L, 100), ans)
@@ -115,9 +115,9 @@ if __name__ == '__main__':
     pool = multiprocessing.Pool(12)
 
 
-    NUM_FRAMES = 10
+    NUM_FRAMES = 1000
     
     
-    t = linspace(0, 1.1269939220108039e-16, NUM_FRAMES)
+    t = linspace(0, 5, NUM_FRAMES)
     pool.map(generate,  [(i, t[i]) for i in range(len(t))])
 
